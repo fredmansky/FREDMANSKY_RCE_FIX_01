@@ -19,12 +19,11 @@ use yii\web\BadRequestHttpException;
  */
 class RceFix extends Plugin
 {
-    public string $schemaVersion = '1.0.0';
-
     public function init(): void
     {
         parent::init();
 
+        $this->schemaVersion = '1.0.0';
         $this->attachEventHandlers();
     }
 
