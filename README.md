@@ -18,5 +18,5 @@ ddev composer require fredmansky/craft-rce-fix && ddev craft plugin/install rce-
 ## Installation with PHP
 
 ```bash
-ddev composer require fredmansky/craft-rce-fix && ddev craft plugin/install rce-fix
+composer require fredmansky/craft-rce-fix && php craft plugin/install rce-fix
 ```
