@@ -1,30 +1,22 @@
 # RCE Fix
 
-Fixes handle rce vulnerability
+This plugin mitigates the critical RCE vulnerability found in Craft CMS by automatically blocking any request that includes __class 
+in the request body. Designed for Craft CMS >= 3.9.4 and >= 4.4.15, 
+it prevents malicious controllers from executing arbitrary code, offering an essential 
+security layer until you can upgrade to the official fixed versions (3.9.15, 4.14.15, and 5.6.17).
 
 ## Requirements
 
-This plugin requires Craft CMS 5.6.0 or later, and PHP 8 or later.
+This plugin requires Craft CMS 3, 4 or 5 and PHP 8.0
 
-## Installation
-
-You can install this plugin from the Plugin Store or with Composer.
-
-#### From the Plugin Store
-
-Go to the Plugin Store in your project’s Control Panel and search for “RCE Fix”. Then press “Install”.
-
-#### With Composer
-
-Open your terminal and run the following commands:
+## Installation with DDEV
 
 ```bash
-# go to the project directory
-cd /path/to/my-project.test
+ddev composer require fredmansky/craft-rce-fix && ddev craft plugin/install rce-fix
+```
 
-# tell Composer to load the plugin
-composer require fredmansky/craft-rce-fix
+## Installation with PHP
 
-# tell Craft to install the plugin
-./craft plugin/install rce-fix
+```bash
+ddev composer require fredmansky/craft-rce-fix && ddev craft plugin/install rce-fix
 ```

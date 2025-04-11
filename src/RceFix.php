@@ -4,6 +4,10 @@ namespace fredmansky\rcefix;
 
 use Craft;
 use craft\base\Plugin;
+use craft\controllers\AssetsController;
+use yii\base\ActionEvent;
+use yii\base\Event;
+use yii\web\BadRequestHttpException;
 
 /**
  * RCE Fix plugin
@@ -17,31 +21,22 @@ class RceFix extends Plugin
 {
     public string $schemaVersion = '1.0.0';
 
-    public static function config(): array
-    {
-        return [
-            'components' => [
-                // Define component configs here...
-            ],
-        ];
-    }
-
     public function init(): void
     {
         parent::init();
 
         $this->attachEventHandlers();
-
-        // Any code that creates an element query or loads Twig should be deferred until
-        // after Craft is fully initialized, to avoid conflicts with other plugins/modules
-        Craft::$app->onInit(function() {
-            // ...
-        });
     }
 
     private function attachEventHandlers(): void
     {
-        // Register event handlers here ...
-        // (see https://craftcms.com/docs/5.x/extend/events.html to get started)
+        Event::on(AssetsController::class, AssetsController::EVENT_BEFORE_ACTION, function (ActionEvent $event) {
+            if ($event->action->id === 'generate-transform') {
+                $handle = Craft::$app->request->getBodyParam('handle');
+                if ($handle && !is_string($handle)) {
+                    throw new BadRequestHttpException('Invalid transform handle.');
+                }
+            }
+        });
     }
 }
