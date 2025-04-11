@@ -1,0 +1,48 @@
+{
+  "name": "fredmansky/craft-rce-fix",
+  "description": "Fixes handle rce vulnerability",
+  "type": "craft-plugin",
+  "license": "mit",
+  "support": {
+    "email": "admin@fredmansky.com",
+    "issues": "https://github.com/fredmansky/fredmansky_rce_fix_01/issues?state=open",
+    "source": "https://github.com/fredmansky/fredmansky_rce_fix_01",
+    "docs": "https://github.com/fredmansky/fredmansky_rce_fix_01",
+    "rss": "https://github.com/fredmansky/fredmansky_rce_fix_01/releases.atom"
+  },
+  "require": {
+    "php": ">=8",
+    "craftcms/cms": "^5.6.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "fredmansky\\rcefix\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "rce-fix",
+    "name": "RCE Fix",
+    "developer": "Samuel Reichör",
+    "documentationUrl": "https://github.com/fredmansky/fredmansky_rce_fix_01",
+    "class": "fredmansky\\rcefix\\RceFix"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}
