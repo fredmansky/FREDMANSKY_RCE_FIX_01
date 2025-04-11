@@ -2,6 +2,7 @@
   "name": "fredmansky/craft-rce-fix",
   "description": "Fixes handle rce vulnerability",
   "type": "craft-plugin",
+  "version": "1.0.0",
   "license": "mit",
   "support": {
     "email": "admin@fredmansky.com",
